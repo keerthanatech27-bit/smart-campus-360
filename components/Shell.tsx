@@ -25,6 +25,6 @@ export default function Shell({ module, children }: { module: string; children: 
         <button className="lg:hidden" aria-label="Menu" onClick={() => setOpen(!open)}>☰</button>
         <p className="flex items-center gap-2 text-sm text-slate-500"><i className="pulse-dot h-2 w-2 rounded-full bg-emerald-500" />Live · <span className="capitalize">{role}</span></p>
         <div className="flex items-center gap-4"><Link href="/app/notifications" className="relative" aria-label="Notifications">🔔{unread > 0 && <b className="absolute -right-2 -top-2 rounded-full bg-red-600 px-1.5 text-[10px] text-white">{unread}</b>}</Link>
-          <button className="text-sm text-slate-500 hover:text-ink" onClick={() => { logout().then(() => r.push("/login")); }}>Sign out</button></div></header>
+          <button className="text-sm text-slate-500 hover:text-ink" onClick={() => { logout(); r.push("/login"); }}>Sign out</button></div></header>
       <main className="mx-auto max-w-6xl p-4 sm:p-8">{error && <div role="alert" className="mb-4 flex items-center justify-between rounded-lg bg-red-50 p-3 text-sm text-red-700">{error}<button className="font-medium underline" onClick={retry}>Retry</button></div>}{loading ? <Skeleton /> : children(nav.some(n => n[0] === module))}</main>{toast && <div role="status" className="fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-lg bg-ink px-4 py-2 text-sm text-white shadow-lg">{toast}</div>}</div></div>;
 }
